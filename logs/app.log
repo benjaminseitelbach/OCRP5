@@ -1,0 +1,20 @@
+2020-07-13 22:30:11,474 INFO SafetynetalertsApplication [main] Initializing Safetynetalers Application
+2020-07-13 22:30:11,761 INFO c.s.s.SafetynetalertsApplication [main] Starting SafetynetalertsApplication on Benjamin-PC with PID 11820 (H:\Documents\Cours\OPENCLASSROOM\PROJET5\Code\safetynetalerts\target\classes started by Benjamin in H:\Documents\Cours\OPENCLASSROOM\PROJET5\Code\safetynetalerts)
+2020-07-13 22:30:11,764 INFO c.s.s.SafetynetalertsApplication [main] No active profile set, falling back to default profiles: default
+2020-07-13 22:30:12,627 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2020-07-13 22:30:12,640 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
+2020-07-13 22:30:12,641 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
+2020-07-13 22:30:12,641 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/9.0.35]
+2020-07-13 22:30:12,712 INFO o.a.c.c.C.[.[.[/] [main] Initializing Spring embedded WebApplicationContext
+2020-07-13 22:30:12,712 INFO o.s.w.c.ContextLoader [main] Root WebApplicationContext: initialization completed in 919 ms
+2020-07-13 22:30:12,910 INFO o.s.s.c.ThreadPoolTaskExecutor [main] Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-13 22:30:13,164 INFO o.s.b.a.e.w.EndpointLinksResolver [main] Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-07-13 22:30:13,189 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
+2020-07-13 22:30:13,207 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-13 22:30:13,221 INFO c.s.s.SafetynetalertsApplication [main] Started SafetynetalertsApplication in 1.683 seconds (JVM running for 2.634)
+2020-07-13 22:30:14,853 INFO o.a.c.c.C.[.[.[/] [RMI TCP Connection(1)-127.0.0.1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-13 22:30:14,853 INFO o.s.w.s.DispatcherServlet [RMI TCP Connection(1)-127.0.0.1] Initializing Servlet 'dispatcherServlet'
+2020-07-13 22:30:14,858 INFO o.s.w.s.DispatcherServlet [RMI TCP Connection(1)-127.0.0.1] Completed initialization in 5 ms
+2020-07-13 22:30:36,629 INFO Controller [http-nio-8080-exec-2] 302 FOUND
+2020-07-13 22:30:40,425 INFO o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin [RMI TCP Connection(3)-127.0.0.1] Application shutdown requested.
+2020-07-13 22:30:40,623 INFO o.s.s.c.ThreadPoolTaskExecutor [RMI TCP Connection(3)-127.0.0.1] Shutting down ExecutorService 'applicationTaskExecutor'

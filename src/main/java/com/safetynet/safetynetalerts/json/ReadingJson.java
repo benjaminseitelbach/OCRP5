@@ -1,17 +1,15 @@
-package com.safetynet.safetynetalerts.JSON;
+package com.safetynet.safetynetalerts.json;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.safetynet.safetynetalerts.config.Config;
 
-public class JSONReader {
+public class ReadingJson {
 
-	public String read() {
+	public static String read() {
 		BufferedReader reader = null;
 		String result = "";
 		
@@ -23,7 +21,7 @@ public class JSONReader {
 
 				// Loop on all file
 				while (line != null) {
-					//System.out.println("line:" + line);
+
 					result += (line + "\n");
 
 					line = reader.readLine();
@@ -37,7 +35,7 @@ public class JSONReader {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		System.out.println("result:" + result);
+
 		return result;
 		
 	}
