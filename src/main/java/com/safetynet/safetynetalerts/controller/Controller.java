@@ -63,10 +63,23 @@ public class Controller {
 
 	}
 
+	/*
 	@RequestMapping(path = "/phoneAlert", method = RequestMethod.GET)
 	public String getPhonesByStationNumber(@RequestParam int stationNumber) {
-
+		System.out.println("station number: " + stationNumber);
 		String phonesByStationNumber = datasDao.getPhonesByStationNumber(stationNumber);
+		
+		logHttpResponse(phonesByStationNumber);
+		
+		return phonesByStationNumber;
+
+	}
+	*/
+	
+	@RequestMapping(path = "/phoneAlert", method = RequestMethod.GET)
+	public String getPhonesByStationNumber(@RequestParam int firestation) {
+		//System.out.println("station number: " + firestation);
+		String phonesByStationNumber = datasDao.getPhonesByStationNumber(firestation);
 		
 		logHttpResponse(phonesByStationNumber);
 		
@@ -136,17 +149,15 @@ public class Controller {
 			return response;
 		}
 	}
-
+	
 	@PutMapping(value = "/person")
 	public ResponseEntity<Void> updatePerson(@RequestBody Person person) {
 		Person personUpdated = datasDao.updatePerson(person);
-
 		ResponseEntity<Void> response;
 		if (personUpdated != null) {
 			
-			//URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{firstName}")
 			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("")
-					.buildAndExpand(person.getFirstName()).toUri();
+					.buildAndExpand(personUpdated.getFirstName()).toUri();
 			response = ResponseEntity.created(location).build();
 			
 			logger.info(response);
@@ -158,14 +169,13 @@ public class Controller {
 			return response;
 		}
 	}
-
+	
 	@DeleteMapping(value = "/person")
 	public ResponseEntity<Void> deletePerson(@RequestParam String firstName, @RequestParam String lastName) {
 		Person personDeleted = datasDao.deletePerson(firstName, lastName);
 		ResponseEntity<Void> response;
 		if (personDeleted != null) {
 			
-			//URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{firstName}")
 			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("")
 					.buildAndExpand(personDeleted.getFirstName()).toUri();
 			response = ResponseEntity.created(location).build();

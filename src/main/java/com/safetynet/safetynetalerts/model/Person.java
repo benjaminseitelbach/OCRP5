@@ -15,6 +15,10 @@ public class Person {
 	private String email;
 	private MedicalRecord medicalRecord;
 	
+	public Person() {
+		
+	}
+	
 	public Person(String firstName, String lastName, String address, String city, String zip, String phone, String email) {
 		this.firstName = firstName;
 		this.lastName = lastName;

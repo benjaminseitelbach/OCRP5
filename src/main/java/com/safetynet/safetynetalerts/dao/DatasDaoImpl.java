@@ -33,7 +33,7 @@ public class DatasDaoImpl implements DatasDao {
 	public void addPerson(Person person) {
 		persons.add(person);
 	}
-
+	
 	public void addFirestation(Firestation firestation) {
 		firestations.add(firestation);
 	}
@@ -136,6 +136,8 @@ public class DatasDaoImpl implements DatasDao {
 
 		for (Person person : persons) {
 			String personAddress = person.getAddress();
+			//System.out.println(personAddress);
+			//System.out.println("addresse URL: " + address);
 			if (personAddress.equals(address)) {
 				String birthDate = person.getMedicalRecord().getBirthDate();
 				int age = DatesUtils.calculateAge(birthDate);
@@ -230,7 +232,7 @@ public class DatasDaoImpl implements DatasDao {
 		return result.toString();
 
 	}
-
+/*
 	public String getPersonsByStations(List<Integer> stations) {
 		String result = "";
 		JSONObject jsonResult = new JSONObject();
@@ -273,10 +275,59 @@ public class DatasDaoImpl implements DatasDao {
 		result = jsonResult.toString();
 		return result;
 	}
+*/	
+	//AJOUT REGROUPEMENT PAR ADDRESSES
+	public String getPersonsByStations(List<Integer> stations) {
+		String result = "";
+		JSONObject jsonResult = new JSONObject();
+		JSONArray arrayResult = new JSONArray();
+		for (Integer station : stations) {
+			for (Firestation firestation : firestations) {
+				if (firestation.getStation() == station) {
+					String address = firestation.getAddress();
+					JSONObject jsonAddress = new JSONObject();
+					JSONArray arrayAddress = new JSONArray();
+					jsonAddress.put("address", address);
+					arrayAddress.put(jsonAddress);
+					for (Person person : persons) {
+						if (person.getAddress().equals(address)) {
+							JSONObject jsonPerson = new JSONObject();
+							jsonPerson.put("firstName", person.getFirstName());
+							jsonPerson.put("lastName", person.getLastName());
+							jsonPerson.put("phone", person.getPhone());
+							MedicalRecord medicalRecord = person.getMedicalRecord();
+							String birthDate = medicalRecord.getBirthDate();
+							int age = DatesUtils.calculateAge(birthDate);
+							jsonPerson.put("age", age);
+
+							JSONArray medications = new JSONArray();
+							for (String medication : medicalRecord.getMedications()) {
+								medications.put(medication);
+							}
+							jsonPerson.put("medications", medications);
+							JSONArray allergies = new JSONArray();
+							for (String allergie : medicalRecord.getAllergies()) {
+								allergies.put(allergie);
+							}
+							jsonPerson.put("allergies", allergies);
+							arrayAddress.put(jsonPerson);
+
+						}
+					}
+					arrayResult.put(arrayAddress);
+
+				}
+
+			}
+		}
+		jsonResult.put("persons", arrayResult);
+		result = jsonResult.toString();
+		return result;
+	}
 
 	
 	public String getPersonInfo(String firstName, String lastName) {
-		System.out.println("Get person info impl");
+		//System.out.println("Get person info impl");
 
 		for (Person person : persons) {
 			//System.out.println(person.getFirstName());
@@ -330,7 +381,7 @@ public class DatasDaoImpl implements DatasDao {
 		persons.add(person);
 		return person;
 	}
-
+	
 	public Person updatePerson(Person pPerson) {
 		for (Person person : persons) {
 
@@ -355,6 +406,8 @@ public class DatasDaoImpl implements DatasDao {
 		}
 		return null;
 	}
+
+	
 
 	public Firestation saveFirestation(Firestation firestation) {
 		firestations.add(firestation);
@@ -391,6 +444,8 @@ public class DatasDaoImpl implements DatasDao {
 		for (Person person : persons) {
 			String personFirstName = person.getFirstName();
 			String personLastName = person.getLastName();
+			
+			System.out.println(personFirstName);
 
 			if (personFirstName.equals(medicalRecordFirstName) && personLastName.equals(medicalRecordLastName)) {
 				person.setMedicalRecord(medicalRecord);

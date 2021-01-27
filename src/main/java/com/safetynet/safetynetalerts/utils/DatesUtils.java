@@ -16,19 +16,24 @@ public class DatesUtils {
 		int birthMonth = Integer.parseInt(sBirthMonth);
 		int birthYear = Integer.parseInt(sBirthYear);
 		
-		//System.out.println(birthDay + "/" + birthMonth +"/" + birthYear);
+		//System.out.println("birth date: " + birthDay + "/" + birthMonth +"/" + birthYear);
 		
 		//Date birthDate = new Date(birthYear, birthMonth, birthDay);
-		LocalDate birthDate = LocalDate.of(birthYear, birthMonth, birthMonth);
+		LocalDate birthDate = LocalDate.of(birthYear, birthMonth, birthDay);
+		//System.out.println("birthDate: " + birthDate);
 		Date today = new Date();
 		int todayDay = today.getDate();
-		int todayMonth = today.getMonth();
+		
+		//TODO VERIFIER AGE FONCTIONNNE TOUJOURS AVEC AJOUT + 1 EN 2021
+		//int todayMonth = today.getMonth();
+		int todayMonth = today.getMonth() + 1;
 		int todayYear = today.getYear() + 1900;
 		//today.get
-		//System.out.println(todayDay + "/" + todayMonth + "/" + todayYear);
+		//System.out.println("today date: " + todayDay + "/" + todayMonth + "/" + todayYear);
 		LocalDate todayDate = LocalDate.of(todayYear, todayMonth, todayDay);
 		//int year = todayYear - birthYear;
-		
+		//System.out.println("today date: " + todayDate);
+		//System.out.println("result: " + Period.between(birthDate, todayDate).getYears());
 		return Period.between(birthDate, todayDate).getYears();
 		
 		//return 0;

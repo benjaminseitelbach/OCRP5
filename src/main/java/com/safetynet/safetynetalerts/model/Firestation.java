@@ -5,6 +5,15 @@ public class Firestation {
 	//@Min(1)
 	private int station;
 	
+	public Firestation() {
+		
+	}
+	
+	public Firestation(String address, int station) {
+		this.address = address;
+		this.station = station;
+	}
+	
 	public String getAddress() {
 		return address;
 	}
